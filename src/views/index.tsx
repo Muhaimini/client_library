@@ -30,7 +30,7 @@ const Main = () => {
               />
               <Button
                 classNames={{ root: "bg-blue-500 hover:bg-blue-600" }}
-                onClick={() => push("/dashboard")}
+                onClick={() => push("/login")}
               >
                 Login
               </Button>

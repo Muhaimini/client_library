@@ -16,6 +16,8 @@ const Main = () => {
   const { push } = useRouter();
   const { data, onSearchBook } = useMainPageHooks();
 
+  const onOpenKelolaPage = () => push("/kelola");
+
   return (
     <MainLayout>
       <MainLayout.Header>
@@ -40,7 +42,12 @@ const Main = () => {
                   Login
                 </Button>
               )}
-              {userProfile && <ProfileUser user={userProfile} />}
+              {userProfile && (
+                <ProfileUser
+                  onOpenKelolaPage={onOpenKelolaPage}
+                  user={userProfile}
+                />
+              )}
             </div>
           </div>
         </div>

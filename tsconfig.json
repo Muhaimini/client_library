@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/types/apps.d.mts"
+    "src/types/apps.d.mts",
+    "src/views/kelola/index.tsxx"
   ],
   "exclude": ["node_modules"]
 }

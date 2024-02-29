@@ -1,8 +1,17 @@
+"use client";
+
 import { Avatar, Menu } from "@mantine/core";
 import { slice } from "lodash";
+import { useRouter } from "next/router";
 import { User } from "response/user-profile";
 
-const ProfileUser = ({ user }: { user: User }) => {
+const ProfileUser = ({
+  user,
+  onOpenKelolaPage,
+}: {
+  user: User;
+  onOpenKelolaPage: () => void;
+}) => {
   return (
     <Menu
       classNames={{ dropdown: "bg-white p-0 w-44", item: "hover:bg-blue-50" }}
@@ -14,7 +23,7 @@ const ProfileUser = ({ user }: { user: User }) => {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item>Buku yang dipinjam</Menu.Item>
-        <Menu.Item>Kelola</Menu.Item>
+        <Menu.Item onClick={onOpenKelolaPage}>Kelola</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

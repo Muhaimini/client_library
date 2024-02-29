@@ -1,3 +1,7 @@
+import "yup";
+
+declare module "yup" {}
+
 declare module "@apps/types" {
   type AppSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 

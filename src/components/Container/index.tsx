@@ -10,7 +10,7 @@ const Container = ({
     <div
       className={cx(
         "flex gap-3 flex-col",
-        { "xl:flex-row md:flex-row": responsive },
+        { "xl:flex-row md:flex-col": responsive },
         className
       )}
     >

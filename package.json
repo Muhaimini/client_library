@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
+    "@hookform/resolvers": "^3.3.4",
     "@mantine/core": "^7.2.2",
     "@mantine/hooks": "^7.2.2",
     "@tanstack/query-core": "^5.8.7",
@@ -23,13 +25,17 @@
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.50.1",
     "react-query": "^3.39.3",
+    "yup": "1.3.3",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/yup": "^0.32.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",

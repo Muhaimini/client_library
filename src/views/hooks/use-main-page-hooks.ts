@@ -24,6 +24,7 @@ const useMainPageHooks = () => {
     isRefetching,
     searchBookValue,
     onSearchBook,
+    refetch,
   };
 };
 

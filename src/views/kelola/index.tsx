@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation";
 import useMainPageHooks from "^views/hooks/use-main-page-hooks";
 import useAuthUser from "^views/hooks/use-auth-user";
 import ProfileUser from "^components/Profile";
-import { Input, TextInput } from "@mantine/core";
+import { TextInput } from "@mantine/core";
+import { Card, Container } from "^components";
 
 const Kelola = () => {
   const { userProfile } = useAuthUser();
-  const { data, onSearchBook } = useMainPageHooks();
+  const { data, refetch } = useMainPageHooks();
 
   const { push } = useRouter();
   const onOpenKelolaPage = () => push("/");
@@ -46,7 +47,28 @@ const Kelola = () => {
               <TextInput label="Judul" />
               <TextInput label="Author" />
             </div>
-            <div className="w-full h-full p-4">hello</div>
+            <div className="w-full h-full p-4 overflow-y-auto">
+              <Container className="mx-10 my-4">
+                {data?.data?.map((books) => (
+                  <Card
+                    key={books?.id}
+                    className="relative flex gap-2 h-72 hover:border-blue-300 cursor-pointer group w-[18rem]"
+                  >
+                    <div className="relative flex flex-col items-center justify-center w-full bg-blue-400">
+                      <div className="text-white text-4xl font-semibold group-hover:text-yellow-400">
+                        {books?.title}
+                      </div>
+                      <div className="text-neutral-50">
+                        By:{" "}
+                        <span className="text-neutral-800">
+                          {books?.author}
+                        </span>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </Container>
+            </div>
           </div>
         </div>
       </MainLayout.Body>

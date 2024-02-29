@@ -4,6 +4,8 @@ import { User } from "response/user-profile";
 import { ChangeEvent } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LOGIN_IN_SCHEMA } from "^utils/schema/validations";
+import usePostCredentials from "^hooks/mutations/use-post-creadential";
+import useLocalStorage from "^hooks/storage";
 
 const defaultValues: Partial<User> = {
   name: "",
@@ -11,6 +13,9 @@ const defaultValues: Partial<User> = {
 };
 
 const useSigninForm = () => {
+  const { mutate } = usePostCredentials();
+  const { setTokenToLocalStorage } = useLocalStorage();
+
   const method = useForm<Partial<User>>({
     defaultValues,
     resolver: yupResolver(LOGIN_IN_SCHEMA),
@@ -29,7 +34,12 @@ const useSigninForm = () => {
 
   const onSubmit = () => {
     const values = method.watch();
-    console.log(values);
+    mutate(values, {
+      onSuccess: (response) => {
+        setTokenToLocalStorage(response.data?.data);
+        onBackToMain();
+      },
+    });
   };
 
   return { method, onOpenSignUpPage, onBackToMain, onSubmit, onInputChange };

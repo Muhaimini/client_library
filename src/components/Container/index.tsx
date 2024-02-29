@@ -9,7 +9,7 @@ const Container = ({
   return (
     <div
       className={cx(
-        "flex gap-3 flex-col",
+        "grid grid-cols-4 gap-4",
         { "xl:flex-row md:flex-col": responsive },
         className
       )}

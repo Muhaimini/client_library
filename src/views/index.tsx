@@ -1,14 +1,18 @@
 "use client";
 
-import React, { memo } from "react";
+import React from "react";
 import MainLayout from "^layouts/main";
 import { Button, Input } from "@mantine/core";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { Card, Container } from "^components";
 import useMainPageHooks from "^views/hooks/use-main-page-hooks";
+import useAuthUser from "^views/hooks/use-auth-user";
+import ProfileUser from "^components/Profile";
 
 const Main = () => {
+  const { userProfile } = useAuthUser();
+
   const { push } = useRouter();
   const { data, onSearchBook } = useMainPageHooks();
 
@@ -28,12 +32,15 @@ const Main = () => {
                 onChange={(event) => onSearchBook(event.target.value)}
                 rightSection={<MagnifyingGlassIcon className="w-4" />}
               />
-              <Button
-                classNames={{ root: "bg-blue-500 hover:bg-blue-600" }}
-                onClick={() => push("/login")}
-              >
-                Login
-              </Button>
+              {!userProfile && (
+                <Button
+                  classNames={{ root: "bg-blue-500 hover:bg-blue-600" }}
+                  onClick={() => push("/login")}
+                >
+                  Login
+                </Button>
+              )}
+              {userProfile && <ProfileUser user={userProfile} />}
             </div>
           </div>
         </div>
@@ -44,14 +51,14 @@ const Main = () => {
           {data?.data?.map((books) => (
             <Card
               key={books?.id}
-              className="relative flex gap-2 h-72 hover:border-blue-300 cursor-pointer group w-[30rem]"
+              className="relative flex gap-2 h-72 hover:border-blue-300 cursor-pointer group w-[25rem]"
             >
-              <div className="flex flex-col items-center justify-center w-full bg-blue-400">
+              <div className="relative flex flex-col items-center justify-center w-full bg-blue-400">
                 <div className="text-white text-4xl font-semibold group-hover:text-yellow-400">
                   {books?.title}
                 </div>
                 <div className="text-neutral-50">
-                  By: <span className="text-neutral-800">{books.author}</span>
+                  By: <span className="text-neutral-800">{books?.author}</span>
                 </div>
               </div>
             </Card>
@@ -62,4 +69,4 @@ const Main = () => {
   );
 };
 
-export default memo(Main);
+export default Main;

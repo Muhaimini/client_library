@@ -13,7 +13,7 @@ export const SIGN_UP_SCHEMA = yup.object<Partial<User>>({
     .trim()
     .required(MESSAGE_VALIDATION.FORMS.REQUIRED_FIELD)
     .matches(/^\+?[1-9]\d/, "Please input with numbers")
-    .min(5, "Min 5 characters")
+    .min(3, "Min 3 characters")
     .max(21, "Max 21 characters"),
   name: yup
     .string()
@@ -42,7 +42,7 @@ export const LOGIN_IN_SCHEMA = yup.object<Partial<User>>({
     .string()
     .trim()
     .required(MESSAGE_VALIDATION.FORMS.REQUIRED_FIELD)
-    .min(5, "Min 5 characters")
+    .min(3, "Min 3 characters")
     .max(21, "Max 21 characters"),
   name: yup
     .string()

@@ -4,7 +4,7 @@ import React from "react";
 import MainLayout from "^layouts/main";
 import cx from "classnames";
 import { Button, Input } from "@mantine/core";
-import { Card, Container } from "^components";
+import { Card } from "^components";
 import useSigninForm from "^views/hooks/use-signin-form";
 import { isEmpty } from "lodash";
 
@@ -29,7 +29,7 @@ const Login = () => {
       </MainLayout.Header>
 
       <MainLayout.Body>
-        <Container className="mx-10 flex items-center justify-center h-[calc(100vh-200px)]">
+        <div className="mx-10 flex items-center justify-center h-[calc(100vh-200px)]">
           <Card className="w-1/4 flex flex-col gap-4 items-center justify-center border-blue-300 shadow-xl rounded-lg py-12">
             <div className="text-2xl font-bold cursor-pointer mb-6">
               login
@@ -89,7 +89,7 @@ const Login = () => {
               Belum punya akun?
             </div>
           </Card>
-        </Container>
+        </div>
       </MainLayout.Body>
     </MainLayout>
   );
